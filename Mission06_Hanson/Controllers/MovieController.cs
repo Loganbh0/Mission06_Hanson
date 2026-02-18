@@ -26,14 +26,15 @@ namespace Mission06_Hanson.Controllers
                 _context.Movies.Add(movie);
                 _context.SaveChanges();
 
-                return RedirectToAction("Confirmation");
+                return RedirectToAction("Confirmation", new { title = movie.Title });
             }
 
             return View(movie);
         }
 
-        public IActionResult Confirmation()
+        public IActionResult Confirmation(string title)
         {
+            ViewBag.MovieTitle = title;
             return View();
         }
 
