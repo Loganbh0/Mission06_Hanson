@@ -22,7 +22,7 @@ namespace Mission06_Hanson.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
+                    b.Property<string>("CategoryId")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

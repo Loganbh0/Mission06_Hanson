@@ -1,7 +1,7 @@
 ﻿@model Mission06_Hanson.Models.Movie
 
 @{
-    ViewData["Title"] = "Enter Movie";
+    ViewData["Title"] = "Edit Movie";
 }
 
 <div class="container mt-5">
@@ -10,11 +10,12 @@
 
             <div class="card shadow">
                 <div class="card-header bg-dark text-white">
-                    <h3 class="mb-0">Add a Movie</h3>
+                    <h3 class="mb-0">Edit Movie</h3>
                 </div>
 
                 <div class="card-body">
-                    <form asp-action="EnterMovie" method="post">
+                    <form asp-action="Edit" method="post">
+                        <input type="hidden" asp-for="MovieId" />
 
                         <div class="mb-3">
                             <label asp-for="CategoryId" class="form-label">Category</label>
@@ -88,8 +89,8 @@
                         </div>
 
                         <div class="d-flex gap-2">
-                            <button type="submit" class="btn btn-primary">Save Movie</button>
-                            <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
                         </div>
 
                     </form>

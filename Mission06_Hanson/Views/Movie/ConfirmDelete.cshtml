@@ -1,0 +1,41 @@
+﻿@model Mission06_Hanson.Models.Movie
+
+@{
+    ViewData["Title"] = "Confirm Delete";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <div class="card border-danger shadow">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="mb-0">Confirm Deletion</h3>
+                </div>
+
+                <div class="card-body">
+                    <p class="fs-5">
+                        Are you sure you want to delete:
+                        <span class="fw-bold">@Model.Title</span>?
+                    </p>
+
+                    <ul class="list-group mb-4">
+                        <li class="list-group-item"><strong>Year:</strong> @Model.Year</li>
+                        <li class="list-group-item"><strong>Category:</strong> @(Model.Category?.CategoryName ?? "")</li>
+                        <li class="list-group-item"><strong>Director:</strong> @(Model.Director ?? "")</li>
+                        <li class="list-group-item"><strong>Rating:</strong> @(Model.Rating ?? "")</li>
+                    </ul>
+
+                    <div class="d-flex gap-2">
+                        <form asp-action="Delete" asp-route-id="@Model.MovieId" method="post">
+                            <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                        </form>
+
+                        <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

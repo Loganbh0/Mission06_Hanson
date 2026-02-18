@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission06_Hanson.Models
 {
@@ -7,26 +8,31 @@ namespace Mission06_Hanson.Models
         [Key]
         public int MovieId { get; set; }
 
-        [Required]
-        public string Category { get; set; } = string.Empty;
+        public int? CategoryId { get; set; }
 
         [Required]
-        public string Title { get; set; } = string.Empty;
+        public string? Title { get; set; }
 
         [Required]
+        [Range(1888, 2100, ErrorMessage = "Year must be 1888 or later.")]
         public int Year { get; set; }
 
-        [Required]
-        public string Director { get; set; } = string.Empty;
+        public string? Director { get; set; }
 
-        [Required]
-        public string Rating { get; set; } = string.Empty; // G, PG, PG-13, R
+        public string? Rating { get; set; }
 
-        public bool Edited { get; set; } // true/false (yes/no)
+        [Required(ErrorMessage = "Please choose Yes or No.")]
+        public bool? CopiedToPlex { get; set; }
+
+        [Required(ErrorMessage = "Please choose Yes or No.")]
+        public bool? Edited { get; set; }
 
         public string? LentTo { get; set; }
 
         [StringLength(25)]
         public string? Notes { get; set; }
+
+        [ForeignKey("CategoryId")]
+        public Category? Category { get; set; }
     }
 }
